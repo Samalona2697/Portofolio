@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samalona Simanjuntak | IT Portfolio</title>
+    <title>Samalona Simanjuntak | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Variabel Warna Tema */
+        /* Variabel Warna Global */
         :root {
-            --bg-dark: #0f0f0f;
-            --card-bg: #1a1a1a;
+            --bg-dark: #0a0a0b;
+            --card-bg: #141416;
             --baby-blue: #89CFF0;
             --earth-brown: #8B5A2B;
-            --text-main: #f5f5f5;
-            --text-muted: #a0a0a0;
-            --badge-bg: rgba(137, 207, 240, 0.1);
+            --earth-brown-light: #a6703c;
+            --text-main: #f5f5f7;
+            --text-muted: #949499;
+            --badge-bg: rgba(137, 207, 240, 0.08);
         }
 
         * {
@@ -31,33 +32,33 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
         }
 
         /* Container Utama */
         .portfolio-container {
             background-color: var(--card-bg);
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
-            border-radius: 24px;
-            padding: 3.5rem 3rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 
-                        0 0 0 1px rgba(139, 90, 43, 0.25);
+            border-radius: 28px;
+            padding: 4rem 3.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
+                        0 0 0 1px rgba(139, 90, 43, 0.15);
             position: relative;
             overflow: hidden;
         }
 
-        /* Aksen Estetik Latar Belakang (Glassmorphism Glow) */
+        /* Efek Cahaya Estetis di Latar Belakang */
         .portfolio-container::before {
             content: "";
             position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 250px;
-            height: 250px;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
             background: var(--baby-blue);
-            filter: blur(120px);
-            opacity: 0.15;
+            filter: blur(130px);
+            opacity: 0.12;
             z-index: 0;
             border-radius: 50%;
         }
@@ -68,15 +69,15 @@
             text-align: center;
         }
 
-        /* --- BAGIAN FOTO PROFIL --- */
+        /* --- FOTO PROFIL UTAMA --- */
         .profile-img-container {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.5rem auto;
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 1.8rem auto;
             border-radius: 50%;
             padding: 4px;
             background: linear-gradient(135deg, var(--baby-blue), var(--earth-brown));
-            box-shadow: 0 8px 20px rgba(137, 207, 240, 0.2);
+            box-shadow: 0 10px 25px rgba(137, 207, 240, 0.15);
         }
 
         .profile-img-container img {
@@ -89,35 +90,38 @@
 
         /* --- TEKS HEADER --- */
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
-            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #dcdcdc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .role {
             color: var(--baby-blue);
             font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
         }
 
         .about {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 3rem;
-            max-width: 650px;
+            line-height: 1.75;
+            margin-bottom: 3.5rem;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- BAGIAN PROJECT --- */
+        /* --- SUB-JUDUL H2 --- */
         h2 {
             font-size: 1.6rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             color: var(--text-main);
             display: inline-block;
             position: relative;
@@ -126,55 +130,86 @@
         h2::after {
             content: "";
             position: absolute;
-            width: 50%;
+            width: 40px;
             height: 3px;
             background-color: var(--earth-brown);
-            bottom: -8px;
-            left: 25%;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 2px;
         }
 
+        /* --- GRID KARTU PROYEK --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 3.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
             text-align: left;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 1.8rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: var(--baby-blue);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(137, 207, 240, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Wadah Gambar Proyek */
+        .project-img-wrapper {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background-color: #222;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        /* Konten di Dalam Kartu Proyek */
+        .project-info {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .project-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
         }
 
         .project-card p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
             flex-grow: 1;
         }
 
-        /* Tech Stack Badges untuk Anak IT */
+        /* Tech Badges */
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -186,10 +221,10 @@
             background-color: var(--badge-bg);
             color: var(--baby-blue);
             font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 20px;
+            padding: 4px 12px;
+            border-radius: 30px;
             font-weight: 500;
-            border: 1px solid rgba(137, 207, 240, 0.2);
+            border: 1px solid rgba(137, 207, 240, 0.15);
         }
 
         /* --- TOMBOL VISIT PROJECT --- */
@@ -202,29 +237,34 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border: 1px solid var(--earth-brown);
-            border-radius: 8px;
+            border-radius: 10px;
             transition: all 0.3s ease;
             width: fit-content;
         }
 
         .btn-visit:hover {
             background-color: var(--earth-brown);
-            color: #fff;
+            border-color: var(--earth-brown-light);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(139, 90, 43, 0.2);
         }
 
-        /* --- KONTAK --- */
+        /* --- BAGIAN KONTAK --- */
         .contact-section {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px dashed rgba(139, 90, 43, 0.4);
+            background: rgba(255, 255, 255, 0.01);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px dashed rgba(139, 90, 43, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .contact-info {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .contact-info a {
@@ -232,21 +272,21 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .contact-info a:hover {
-            color: var(--text-main);
-            text-shadow: 0 0 10px rgba(137, 207, 240, 0.5);
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(137, 207, 240, 0.6);
         }
 
-        /* Responsif untuk Mobile */
+        /* Responsif Layar Kecil (HP) */
         @media (max-width: 768px) {
-            .portfolio-container { padding: 2.5rem 1.5rem; }
-            h1 { font-size: 2rem; }
-            .role { font-size: 0.9rem; }
+            .portfolio-container { padding: 3rem 1.5rem; }
+            h1 { font-size: 2.1rem; }
+            .role { font-size: 0.95rem; }
             .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -264,52 +304,72 @@
             <p class="role">Software Developer & UI/UX Designer</p>
             
             <p class="about">
-                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Memiliki minat yang kuat dalam pengembangan aplikasi web dan mobile, perancangan antarmuka pengguna (UI/UX) yang berpusat pada pengguna, serta analisis dan visualisasi data spasial.
+                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Fokus pada penyelarasan rekayasa sistem perangkat lunak yang andal dengan perancangan pengalaman pengguna (UI/UX) yang intuitif serta pemetaan data spasial yang presisi.
             </p>
 
             <h2>My Projects</h2>
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <h3>Campus-Hub Mobile App</h3>
-                    <p>Aplikasi mobile akademik yang dirancang khusus untuk memfasilitasi kebutuhan mahasiswa Jurusan Teknik Komputer dan Informatika di Polmed.</p>
-                    <div class="tech-stack">
-                        <span>Mobile Dev</span>
-                        <span>UI/UX Design</span>
+                    <div class="project-img-wrapper">
+                        <img src="img-campus-hub.jpg" alt="Campus-Hub Mobile App">
                     </div>
-                    <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    <div class="project-info">
+                        <h3>Campus-Hub Mobile App</h3>
+                        <p>Platform akademik berbasis mobile yang dirancang khusus untuk mendukung kebutuhan interaksi dan pengelolaan informasi mahasiswa Jurusan Teknik Komputer dan Informatika di Polmed.</p>
+                        <div class="tech-stack">
+                            <span>Mobile Dev</span>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Spatial Mapping & GIS</h3>
-                    <p>Proyek analisis data spasial dan pemetaan outlet F&B (Kopi Kenangan & Fore Coffee) serta objek pariwisata di wilayah Kota Medan dan Kabupaten Deli Serdang.</p>
-                    <div class="tech-stack">
-                        <span>QGIS</span>
-                        <span>Spatial Analysis</span>
-                        <span>Data Mapping</span>
+                    <div class="project-img-wrapper">
+                        <img src="img-spatial-mapping.jpg" alt="Spatial Mapping & GIS">
                     </div>
-                    <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    <div class="project-info">
+                        <h3>Spatial Mapping & GIS</h3>
+                        <p>Analisis dan visualisasi data geospasial untuk pemetaan distribusi outlet bisnis F&B komersial serta titik lokasi destinasi pariwisata di wilayah Medan dan Deli Serdang menggunakan QGIS.</p>
+                        <div class="tech-stack">
+                            <span>QGIS</span>
+                            <span>Spatial Analysis</span>
+                            <span>Data Mapping</span>
+                        </div>
+                        <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>We Safe - Donation App</h3>
-                    <p>Pengembangan aplikasi platform donasi digital untuk mempermudah proses penggalangan dana sosial dengan antarmuka yang aman dan mudah digunakan.</p>
-                    <div class="tech-stack">
-                        <span>Software Development</span>
-                        <span>Figma</span>
+                    <div class="project-img-wrapper">
+                        <img src="img-we-safe.jpg" alt="We Safe Donation App">
                     </div>
-                    <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    <div class="project-info">
+                        <h3>We Safe - Donation App</h3>
+                        <p>Perancangan produk dan sistem aplikasi galang dana digital yang berfokus pada transparansi alur bantuan serta antarmuka yang clean untuk mempermudah pengalaman donatur.</p>
+                        <div class="tech-stack">
+                            <span>Software Development</span>
+                            <span>Figma Prototype</span>
+                        </div>
+                        <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>MyHSK & Hanzi Game</h3>
-                    <p>Aplikasi dan game edukasi interaktif berbasis mobile untuk membantu pengguna mengingat dan mempersiapkan ujian karakter bahasa Mandarin.</p>
-                    <div class="tech-stack">
-                        <span>Flutter</span>
-                        <span>Dart</span>
-                        <span>Mobile Dev</span>
+                    <div class="project-img-wrapper">
+                        <img src="img-myhsk.jpg" alt="MyHSK & Hanzi Game">
                     </div>
-                    <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    <div class="project-info">
+                        <h3>MyHSK & Hanzi Game</h3>
+                        <p>Aplikasi seluler edukatif menggunakan kerangka kerja Flutter yang mengintegrasikan metode gamifikasi interaktif untuk membantu menghafal karakter Hanzi secara efektif.</p>
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Mobile Dev</span>
+                        </div>
+                        <a href="#" class="btn-visit" target="_blank">View Project &rarr;</a>
+                    </div>
                 </div>
 
             </div>
@@ -317,7 +377,7 @@
             <h2>Let's Connect</h2>
             <div class="contact-section">
                 <p class="contact-info">
-                    Tertarik untuk berkolaborasi dalam proyek software development atau UI/UX design?<br>
+                    Ingin berdiskusi mengenai peluang kolaborasi pengembangan aplikasi maupun pembuatan desain antarmuka?<br>
                     <a href="mailto:samalonasimanjuntak2697@gmail.com">samalonasimanjuntak2697@gmail.com</a>
                 </p>
             </div>
