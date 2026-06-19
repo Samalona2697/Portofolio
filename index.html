@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samalona Simanjuntak | Creative IT Portfolio</title>
+    <title>Samalona Simanjuntak | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Variabel Warna & Tema Premium */
+        /* Modern Premium Palette */
         :root {
-            --bg-deep: #08080a;
-            --card-glass: rgba(20, 20, 25, 0.7);
-            --card-border: rgba(255, 255, 255, 0.05);
+            --bg-dark: #070708;
+            --card-glass: rgba(18, 18, 22, 0.65);
+            --card-border: rgba(255, 255, 255, 0.04);
             --baby-blue: #89CFF0;
-            --baby-blue-glow: rgba(137, 207, 240, 0.3);
+            --baby-blue-glow: rgba(137, 207, 240, 0.25);
             --earth-brown: #8B5A2B;
-            --earth-brown-glow: rgba(139, 90, 43, 0.4);
+            --earth-brown-glow: rgba(139, 90, 43, 0.35);
             --text-pure: #ffffff;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
         }
 
-        /* Reset & Base Setup */
+        /* Base Settings */
         * {
             margin: 0;
             padding: 0;
@@ -29,19 +29,19 @@
         }
 
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* --- ANIMATED BACKGROUND BLOBS (Efek Cahaya Bergerak) --- */
-        .blob-container {
+        /* --- ADVANCED ANIMATED MESH BACKGROUND --- */
+        .bg-glow-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -52,413 +52,449 @@
             pointer-events: none;
         }
 
-        .blob {
+        .glow-sphere {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            animation: floatBlobs 20s infinite alternate ease-in-out;
+            filter: blur(140px);
+            opacity: 0.2;
+            animation: moveSpheres 25s infinite alternate ease-in-out;
         }
 
-        .blob-1 {
-            top: -10%;
+        .sphere-1 {
+            top: -15%;
             right: -10%;
-            width: 450px;
-            height: 450px;
-            background: var(--baby-blue);
-            animation-duration: 25s;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--baby-blue) 0%, transparent 70%);
+            animation-duration: 20s;
         }
 
-        .blob-2 {
-            bottom: -10%;
+        .sphere-2 {
+            bottom: -15%;
             left: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--earth-brown);
-            animation-duration: 30s;
-            animation-delay: -5s;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, var(--earth-brown) 0%, transparent 70%);
+            animation-duration: 28s;
+            animation-delay: -7s;
         }
 
-        @keyframes floatBlobs {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(60px, -40px) scale(1.15); }
-            100% { transform: translate(-40px, 50px) scale(0.9); }
+        .sphere-3 {
+            top: 40%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #4a3728 0%, transparent 60%);
+            opacity: 0.15;
+            animation-duration: 22s;
         }
 
-        /* --- MAIN PORTFOLIO CONTAINER (Glassmorphism) --- */
-        .portfolio-wrapper {
+        @keyframes moveSpheres {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(80px, -60px) scale(1.15); }
+            100% { transform: translate(-50px, 70px) scale(0.9); }
+        }
+
+        /* --- PORTFOLIO CONTAINER (GLASSMORPHISM) --- */
+        .portfolio-card {
             background: var(--card-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            max-width: 1000px;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            max-width: 1050px;
             width: 100%;
-            border-radius: 32px;
-            padding: 5rem 4rem;
+            border-radius: 36px;
+            padding: 5.5rem 4.5rem;
             border: 1px solid var(--card-border);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.08);
             position: relative;
             z-index: 1;
+            animation: fadeInContainer 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .content-center {
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .center-layout {
             text-align: center;
         }
 
-        /* --- FOTO PROFIL DENGAN ANIMASI BREATHING GLOW --- */
-        .profile-wrapper {
+        /* --- FOTO PROFIL DENGAN EFEK FLOATING & ROTATING GRADIENT GLOW --- */
+        .avatar-box {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem auto;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 2.5rem auto;
+            animation: floatAvatar 6s infinite ease-in-out;
         }
 
-        .profile-circle {
-            width: 100%;
-            height: 100%;
+        .avatar-glow-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
             border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(135deg, var(--baby-blue), var(--earth-brown));
-            position: relative;
-            z-index: 2;
-            animation: pulseGlow 4s infinite alternate ease-in-out;
+            background: linear-gradient(135deg, var(--baby-blue), var(--earth-brown), var(--baby-blue));
+            background-size: 200% 200%;
+            z-index: 1;
+            animation: rotateGradient 4s linear infinite, pulseRing 3s infinite alternate ease-in-out;
         }
 
-        .profile-circle img {
+        .avatar-box img {
+            position: relative;
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #141419;
+            border: 5px solid #111115;
+            z-index: 2;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(137, 207, 240, 0.2); }
-            100% { box-shadow: 0 0 30px rgba(139, 90, 43, 0.5), 0 0 15px rgba(137, 207, 240, 0.4); }
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* --- TYPOGRAPHY & HEADER --- */
+        @keyframes rotateGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulseRing {
+            0% { box-shadow: 0 0 10px var(--baby-blue-glow); }
+            100% { box-shadow: 0 0 30px var(--earth-brown-glow), 0 0 15px var(--baby-blue-glow); }
+        }
+
+        /* --- TYPOGRAPHY & BRANDING --- */
         h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 30%, var(--baby-blue));
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.75px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--baby-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline {
+        .profession {
             color: var(--baby-blue);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 3.5px;
         }
 
-        .bio-text {
+        .biography {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 4.5rem;
-            max-width: 720px;
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 5rem;
+            max-width: 760px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- SECTION H2 DESIGN --- */
+        /* --- SECTION HEADERS --- */
         h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 3.5rem;
             color: var(--text-pure);
             position: relative;
             display: inline-block;
+            letter-spacing: -0.5px;
         }
 
         h2::after {
             content: "";
             position: absolute;
-            width: 30px;
+            width: 40px;
             height: 4px;
-            background: var(--baby-blue);
-            bottom: -12px;
+            background: linear-gradient(to right, var(--baby-blue), var(--earth-brown));
+            bottom: -14px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
-            box-shadow: 0 0 8px var(--baby-blue);
+            border-radius: 4px;
         }
 
-        /* --- PROJECTS GRID --- */
-        .grid-layout {
+        /* --- PREMIUM PROJECTS GRID --- */
+        .projects-grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5.5rem;
             text-align: left;
         }
 
-        .card-project {
-            background: rgba(255, 255, 255, 0.02);
+        .project-glass-card {
+            background: rgba(255, 255, 255, 0.015);
             border: 1px solid var(--card-border);
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        .card-project:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(137, 207, 240, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                        0 0 20px rgba(137, 207, 240, 0.05);
+        .project-glass-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(137, 207, 240, 0.35);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5),
+                        0 0 25px rgba(137, 207, 240, 0.04);
         }
 
-        /* Image Mask & Zoom Effect */
-        .img-container {
+        /* Image Containers & Scale FX */
+        .project-thumbnail-wrapper {
             width: 100%;
-            height: 210px;
+            height: 230px;
             overflow: hidden;
             position: relative;
-            background: #18181c;
-            border-bottom: 1px solid var(--card-border);
+            background: #121216;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .img-container img {
+        .project-thumbnail-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card-project:hover .img-container img {
-            transform: scale(1.08);
+        .project-glass-card:hover .project-thumbnail-wrapper img {
+            transform: scale(1.06);
         }
 
-        /* Card Content */
-        .info-container {
-            padding: 2.2rem;
+        /* Card Text Elements */
+        .project-details {
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .card-project h3 {
-            font-size: 1.3rem;
+        .project-glass-card h3 {
+            font-size: 1.35rem;
             color: var(--text-pure);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.9rem;
             font-weight: 700;
+            line-height: 1.4;
         }
 
-        .card-project p {
-            font-size: 0.9rem;
+        .project-glass-card p {
+            font-size: 0.92rem;
             color: var(--text-muted);
-            margin-bottom: 1.8rem;
-            line-height: 1.65;
+            margin-bottom: 2rem;
+            line-height: 1.7;
             flex-grow: 1;
         }
 
-        /* Modern Tech Badges */
-        .badge-box {
+        /* Advanced Badges */
+        .tech-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
         }
 
-        .badge-box span {
-            background: rgba(137, 207, 240, 0.06);
+        .tech-badges span {
+            background: rgba(137, 207, 240, 0.05);
             color: var(--baby-blue);
             font-size: 0.75rem;
-            padding: 5px 14px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 600;
             border: 1px solid rgba(137, 207, 240, 0.12);
             letter-spacing: 0.5px;
         }
 
-        /* --- INTERACTIVE VISIT BUTTON --- */
-        .visit-link {
+        /* --- SMART LINKS & VISIT BUTTON --- */
+        .action-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: transparent;
             color: var(--text-pure);
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            padding: 11px 24px;
+            padding: 12px 26px;
             border: 1px solid var(--earth-brown);
-            border-radius: 12px;
+            border-radius: 14px;
             transition: all 0.3s ease;
             width: fit-content;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .visit-link:hover {
+        .action-button:hover {
             background: var(--earth-brown);
-            box-shadow: 0 5px 15px var(--earth-brown-glow);
-            transform: translateX(3px);
+            box-shadow: 0 8px 20px var(--earth-brown-glow);
+            transform: translateX(4px);
         }
 
-        /* --- CONTACT BOX (DASHED BOX) --- */
-        .connect-box {
+        /* --- DASHED CONTACT FRAME --- */
+        .frame-connect {
             background: rgba(255, 255, 255, 0.01);
-            padding: 3rem;
-            border-radius: 24px;
+            padding: 3.5rem 2rem;
+            border-radius: 28px;
             border: 1px dashed rgba(139, 90, 43, 0.4);
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
-            transition: border-color 0.3s ease;
+            transition: all 0.4s ease;
         }
 
-        .connect-box:hover {
+        .frame-connect:hover {
             border-color: var(--baby-blue);
+            background: rgba(137, 207, 240, 0.01);
         }
 
-        .connect-text {
+        .connect-description {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            line-height: 1.75;
         }
 
-        .connect-text a {
+        .connect-description a {
             color: var(--baby-blue);
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             transition: all 0.3s ease;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 18px;
             position: relative;
         }
 
-        .connect-text a::after {
+        .connect-description a::after {
             content: "";
             position: absolute;
             width: 100%;
             height: 2px;
-            bottom: -2px;
+            bottom: -3px;
             left: 0;
             background-color: var(--baby-blue);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .connect-text a:hover::after {
+        .connect-description a:hover::after {
             transform: scaleX(1);
         }
 
-        .connect-text a:hover {
+        .connect-description a:hover {
             color: #ffffff;
-            text-shadow: 0 0 10px var(--baby-blue-glow);
+            text-shadow: 0 0 12px rgba(137, 207, 240, 0.4);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            .portfolio-wrapper { padding: 3.5rem 2rem; }
-            h1 { font-size: 2.2rem; }
-            .tagline { font-size: 0.95rem; }
-            .grid-layout { grid-template-columns: 1fr; }
+        /* Responsive Configuration */
+        @media (max-width: 900px) {
+            .portfolio-card { padding: 4rem 2rem; }
+            h1 { font-size: 2.4rem; }
+            .profession { font-size: 1rem; }
+            .projects-grid-layout { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob-container">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
+    <div class="bg-glow-container">
+        <div class="glow-sphere sphere-1"></div>
+        <div class="glow-sphere sphere-2"></div>
+        <div class="glow-sphere sphere-3"></div>
     </div>
 
-    <div class="portfolio-wrapper">
-        <div class="content-center">
+    <div class="portfolio-card">
+        <div class="center-layout">
             
-            <div class="profile-wrapper">
-                <div class="profile-circle">
-                    <img src="foto formal.png" alt="Foto Samalona Simanjuntak">
-                </div>
+            <div class="avatar-box">
+                <div class="avatar-glow-ring"></div>
+                <img src="foto formal.png" alt="Foto Samalona Simanjuntak">
             </div>
 
             <h1>Samalona Simanjuntak</h1>
-            <p class="tagline">Software Developer & UI/UX Designer</p>
+            <p class="profession">Software Developer & UI/UX Designer</p>
             
-            <p class="bio-text">
-                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Fokus pada penyelarasan rekayasa sistem perangkat lunak yang andal dengan perancangan pengalaman pengguna (UI/UX) yang intuitif serta pemetaan data spasial yang presisi.
+            <p class="biography">
+                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Berfokus pada integrasi arsitektur pemrograman perangkat lunak yang andal dengan perancangan antarmuka pengguna (UI/UX) yang intuitif serta pengolahan sistem informasi data spasial.
             </p>
 
             <h2>My Projects</h2>
-            <div class="grid-layout">
+            <div class="projects-grid-layout">
                 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-glass-card">
+                    <div class="project-thumbnail-wrapper">
                         <img src="app akademik thumbnail.jpg" alt="Campus-Hub App Akademik">
                     </div>
-                    <div class="info-container">
+                    <div class="project-details">
                         <h3>Campus-Hub App Akademik</h3>
-                        <p>Platform akademik berbasis mobile yang dirancang khusus untuk mendukung kebutuhan interaksi dan pengelolaan informasi mahasiswa Jurusan Teknik Komputer dan Informatika di Polmed.</p>
-                        <div class="badge-box">
+                        <p>Aplikasi akademik berbasis mobile yang dirancang khusus untuk mengintegrasikan kebutuhan informasi, administrasi, dan interaksi bagi civitas akademika Jurusan Teknik Komputer dan Informatika Polmed.</p>
+                        <div class="tech-badges">
                             <span>Mobile Dev</span>
                             <span>UI/UX Design</span>
+                            <span>Academic App</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="#" class="action-button" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-glass-card">
+                    <div class="project-thumbnail-wrapper">
                         <img src="pemetaan coffee.jpg" alt="Pemetaan Kopi Kenangan dan Fore di Kota Medan">
                     </div>
-                    <div class="info-container">
+                    <div class="project-details">
                         <h3>Pemetaan Kopi Kenangan dan Fore di Kota Medan</h3>
-                        <p>Analisis dan visualisasi data geospasial untuk pemetaan distribusi outlet bisnis F&B komersial (Kopi Kenangan & Fore Coffee) di wilayah Kota Medan menggunakan perangkat lunak QGIS.</p>
-                        <div class="badge-box">
+                        <p>Sistem visualisasi data geospasial komprehensif untuk memetakan distribusi lokasi serta jangkauan pasar gerai F&B modern di wilayah urban Kota Medan menggunakan QGIS.</p>
+                        <div class="tech-badges">
                             <span>QGIS</span>
                             <span>Spatial Analysis</span>
                             <span>Data Mapping</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="#" class="action-button" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-glass-card">
+                    <div class="project-thumbnail-wrapper">
                         <img src="thumbnail SIG.png" alt="Tourscape-Ms">
                     </div>
-                    <div class="info-container">
+                    <div class="project-details">
                         <h3>Tourscape-Ms Pemetaan tempat wisata di Medan dan Deli serdang</h3>
-                        <p>Proyek Sistem Informasi Geografis (SIG) komprehensif untuk memetakan, mengelompokkan, dan memvisualisasikan seluruh titik lokasi destinasi pariwisata potensial.</p>
-                        <div class="badge-box">
+                        <p>Aplikasi Sistem Informasi Geografis (SIG) interaktif untuk memetakan rute, mengklasifikasikan destinasi objek wisata, dan menyajikan visualisasi spasial wilayah Medan & Deli Serdang.</p>
+                        <div class="tech-badges">
                             <span>Geographic Info System</span>
                             <span>Visual Mapping</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="#" class="action-button" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-glass-card">
+                    <div class="project-thumbnail-wrapper">
                         <img src="we safe.jpg" alt="We Safe Donation App">
                     </div>
-                    <div class="info-container">
+                    <div class="project-details">
                         <h3>Aplikasi Donasi "We Safe"</h3>
-                        <p>Perancangan produk dan sistem aplikasi galang dana digital yang berfokus pada transparansi alur bantuan serta antarmuka yang clean untuk mempermudah pengalaman donatur.</p>
-                        <div class="badge-box">
+                        <p>Pengembangan produk platform sosial berbasis digital yang didesain untuk memfasilitasi penggalangan dana secara aman dengan mengutamakan UI yang clean dan efisiensi UX aliran donasi.</p>
+                        <div class="tech-badges">
                             <span>Software Development</span>
                             <span>Figma Prototype</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="#" class="action-button" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
             </div>
 
             <h2>Let's Connect</h2>
-            <div class="connect-box">
-                <p class="connect-text">
-                    Ingin berdiskusi mengenai peluang kolaborasi pengembangan aplikasi maupun pembuatan desain antarmuka?<br>
+            <div class="frame-connect">
+                <p class="connect-description">
+                    Tertarik untuk berkolaborasi dalam rancangan rekayasa perangkat lunak maupun pembuatan prototype UI/UX yang dinamis?<br>
                     <a href="mailto:samalonasimanjuntak2697@gmail.com">samalonasimanjuntak2697@gmail.com</a>
                 </p>
             </div>
