@@ -3,92 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lona Simanjuntak - Portfolio</title>
+    <title>Samalona Simanjuntak | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset CSS Sederhana untuk konsistensi */
+        /* Variabel Warna */
+        :root {
+            --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --baby-blue: #89CFF0;
+            --earth-brown: #8B5A2B;
+            --text-main: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f0f0f0; /* Latar belakang abu-abu terang */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang lebih bersih */
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 2rem;
         }
 
-        .card {
-            background-color: #ffffff; /* Kartu putih */
-            border-radius: 20px; /* Sudut membulat */
-            padding: 50px 40px; /* Padding yang lebih baik */
-            width: 90%;
-            max-width: 650px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Bayangan yang lebih dalam */
-            text-align: center; /* Pemusatan teks secara keseluruhan */
+        /* Container Utama */
+        .portfolio-container {
+            background-color: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                        0 0 0 1px rgba(139, 90, 43, 0.2); /* Sentuhan coklat tanah di border */
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Aksen Estetik di Background */
+        .portfolio-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--baby-blue);
+            filter: blur(100px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* --- BAGIAN FOTO PROFIL --- */
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--baby-blue), var(--earth-brown));
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg); /* Memberi efek menyatu */
+        }
+
+        /* --- TEKS HEADER --- */
         h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
         }
 
-        .title {
-            font-size: 1em;
-            font-weight: normal;
-            margin-bottom: 25px;
-            color: #666;
+        .role {
+            color: var(--baby-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        h2 {
-            font-size: 1.5em;
-            margin-top: 35px;
-            margin-bottom: 12px;
-            color: #444;
-        }
-
-        p {
-            color: #555;
+        .about {
+            color: var(--text-muted);
+            font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Perbaikan Daftar Proyek */
-        .project-list {
-            display: inline-block; /* Agar `text-align: center` pada induk berfungsi untuk memusatkan blok */
-            text-align: left; /* Item di dalam blok didorong ke kiri */
-            padding: 0;
-            margin-top: 5px;
+        /* --- BAGIAN PROJECT --- */
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--earth-brown);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .project-list li {
-            margin-bottom: 8px;
-            list-style-type: disc; /* Poin */
-            margin-left: 20px; /* Beri jarak dari tepi blok untuk poin */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: left;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--baby-blue);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            color: var(--baby-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* --- TOMBOL VISIT PROJECT --- */
+        .btn-visit {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border: 1px solid var(--earth-brown);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-visit:hover {
+            background-color: var(--earth-brown);
+            color: #fff;
+        }
+
+        /* --- KONTAK --- */
+        .contact-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--baby-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-main);
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 600px) {
+            .portfolio-container { padding: 2rem 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            .role { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Lona Simanjuntak</h1>
-        <p class="title">UI/UX Designer | Flutter Developer</p>
-        
-        <h2>Tentang Saya</h2>
-        <p>Mahasiswa IT yang fokus pada pengembangan aplikasi mobile dan desain UI/UX.</p>
-        
-        <h2>Project</h2>
-        <ul class="project-list">
-            <li>MyHSK</li>
-            <li>Flutter Hanzi Memory Game</li>
-            <li>Career Preparation Platform</li>
-        </ul>
-        
-        <h2>Kontak</h2>
-        <p>Email: emailkamu@gmail.com</p>
+
+    <div class="portfolio-container">
+        <div class="content-wrapper">
+            
+            <!-- ==========================================
+                 DI SINI TEMPAT MENGGANTI FOTO KAMU
+                 Ganti "foto-profil.jpg" dengan nama file fotomu,
+                 atau gunakan link foto dari internet.
+                 ========================================== -->
+            <div class="profile-img-container">
+                <img src="foto-profil.jpg" alt="Foto Samalona">
+            </div>
+
+            <h1>Samalona Simanjuntak</h1>
+            <p class="role">Software Developer & UI/UX Designer</p>
+            
+            <p class="about">
+                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Saya memiliki fokus kuat dalam merancang antarmuka pengguna yang intuitif sekaligus membangun sistem perangkat lunak yang fungsional dan efisien.
+            </p>
+
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>MyHSK</h3>
+                    <p>Aplikasi yang dirancang untuk membantu pengguna mempelajari dan mempersiapkan ujian kemampuan bahasa.</p>
+                    <!-- Ganti tanda # di bawah ini dengan link project aslimu -->
+                    <a href="#" class="btn-visit" target="_blank">Visit Project &rarr;</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>Hanzi Memory Game</h3>
+                    <p>Game edukasi berbasis Flutter untuk membantu mengingat karakter Hanzi dengan metode interaktif yang menyenangkan.</p>
+                    <!-- Ganti tanda # di bawah ini dengan link project aslimu -->
+                    <a href="#" class="btn-visit" target="_blank">Visit Project &rarr;</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3>Career Platform</h3>
+                    <p>Platform persiapan karir yang dilengkapi dengan fitur penunjang pengembangan kompetensi profesional.</p>
+                    <!-- Ganti tanda # di bawah ini dengan link project aslimu -->
+                    <a href="#" class="btn-visit" target="_blank">Visit Project &rarr;</a>
+                </div>
+
+            </div>
+
+            <h2>Let's Connect</h2>
+            <p class="contact-info">
+                Punya ide menarik atau tawaran kerja sama? <br><br>
+                Email: <a href="mailto:emailkamu@gmail.com">emailkamu@gmail.com</a>
+            </p>
+
+        </div>
     </div>
+
 </body>
 </html>
