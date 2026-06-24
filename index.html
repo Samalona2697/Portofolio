@@ -3,468 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samalona Simanjuntak | Creative IT Portfolio</title>
+    <title>Samalona Simanjuntak | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Variabel Warna & Tema Premium */
+        /* Modern Minimalist Cyber Palette */
         :root {
-            --bg-deep: #08080a;
-            --card-glass: rgba(20, 20, 25, 0.7);
-            --card-border: rgba(255, 255, 255, 0.05);
+            --bg-main: #000000;
+            --bg-card: #0b0b0f;
+            --bg-card-hover: #121218;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(137, 207, 240, 0.3);
             --baby-blue: #89CFF0;
-            --baby-blue-glow: rgba(137, 207, 240, 0.3);
             --earth-brown: #8B5A2B;
-            --earth-brown-glow: rgba(139, 90, 43, 0.4);
-            --text-pure: #ffffff;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
         }
 
-        /* Reset & Base Setup */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 5rem 2rem;
-            position: relative;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* --- ANIMATED BACKGROUND BLOBS (Efek Cahaya Bergerak) --- */
-        .blob-container {
+        /* --- STICKY NAVIGATION --- */
+        header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            animation: floatBlobs 20s infinite alternate ease-in-out;
-        }
-
-        .blob-1 {
-            top: -10%;
-            right: -10%;
-            width: 450px;
-            height: 450px;
-            background: var(--baby-blue);
-            animation-duration: 25s;
-        }
-
-        .blob-2 {
-            bottom: -10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--earth-brown);
-            animation-duration: 30s;
-            animation-delay: -5s;
-        }
-
-        @keyframes floatBlobs {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(60px, -40px) scale(1.15); }
-            100% { transform: translate(-40px, 50px) scale(0.9); }
-        }
-
-        /* --- MAIN PORTFOLIO CONTAINER (Glassmorphism) --- */
-        .portfolio-wrapper {
-            background: var(--card-glass);
+            top: 0; width: 100%;
+            padding: 1.2rem 10%;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            max-width: 1000px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--baby-blue); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--baby-blue);
+        }
+
+        /* --- CONTAINER WRAPPER --- */
+        .container {
+            max-width: 1100px;
             width: 100%;
-            border-radius: 32px;
-            padding: 5rem 4rem;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-top: 7.5rem;
+            padding: 0 1.5rem;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        /* --- HERO SEKSI --- */
+        .hero-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-side {
             position: relative;
-            z-index: 1;
+            flex-shrink: 0;
         }
 
-        .content-center {
-            text-align: center;
+        .profile-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--earth-brown);
+            box-shadow: 0 0 20px rgba(139, 90, 43, 0.15);
+            transition: transform 0.3s ease;
         }
 
-        /* --- FOTO PROFIL DENGAN ANIMASI BREATHING GLOW --- */
-        .profile-wrapper {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem auto;
+        .profile-frame:hover {
+            transform: scale(1.03);
+            border-color: var(--baby-blue);
         }
 
-        .profile-circle {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(135deg, var(--baby-blue), var(--earth-brown));
-            position: relative;
-            z-index: 2;
-            animation: pulseGlow 4s infinite alternate ease-in-out;
-        }
-
-        .profile-circle img {
+        .profile-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #141419;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(137, 207, 240, 0.2); }
-            100% { box-shadow: 0 0 30px rgba(139, 90, 43, 0.5), 0 0 15px rgba(137, 207, 240, 0.4); }
+        .text-side {
+            flex-grow: 1;
         }
 
-        /* --- TYPOGRAPHY & HEADER --- */
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
+            letter-spacing: -1px;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 30%, var(--baby-blue));
+            background: linear-gradient(135deg, #ffffff, #a1a1aa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline {
+        .subtitle {
             color: var(--baby-blue);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 3px;
+            margin-bottom: 1.2rem;
         }
 
-        .bio-text {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 4.5rem;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.75;
         }
 
-        /* --- SECTION H2 DESIGN --- */
-        h2 {
-            font-size: 1.8rem;
+        /* --- SEKSI TITLE UMUM --- */
+        .sec-title {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--text-pure);
-            position: relative;
-            display: inline-block;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        h2::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 4px;
+        .sec-title::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
             background: var(--baby-blue);
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
             border-radius: 2px;
-            box-shadow: 0 0 8px var(--baby-blue);
         }
 
-        /* --- PROJECTS GRID --- */
-        .grid-layout {
+        /* --- SKILLS MATRIX --- */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .card-project {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            flex-direction: column;
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 20px;
         }
 
-        .card-project:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(137, 207, 240, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                        0 0 20px rgba(137, 207, 240, 0.05);
+        .skill-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
         }
 
-        /* Image Mask & Zoom Effect */
-        .img-container {
-            width: 100%;
-            height: 210px;
-            overflow: hidden;
-            position: relative;
-            background: #18181c;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .card-project:hover .img-container img {
-            transform: scale(1.08);
-        }
-
-        /* Card Content */
-        .info-container {
-            padding: 2.2rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-project h3 {
-            font-size: 1.3rem;
-            color: var(--text-pure);
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-        }
-
-        .card-project p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.8rem;
-            line-height: 1.65;
-            flex-grow: 1;
-        }
-
-        /* Modern Tech Badges */
-        .badge-box {
+        .tags-wrapper {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 1.8rem;
         }
 
-        .badge-box span {
-            background: rgba(137, 207, 240, 0.06);
+        .tags-wrapper span {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* --- PROJECTS CRISP GRID --- */
+        .projects-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .img-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover .img-box img {
+            transform: scale(1.04);
+        }
+
+        .details-box {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .details-box h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .details-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .item-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        .item-badges span {
+            background: rgba(137, 207, 240, 0.05);
             color: var(--baby-blue);
             font-size: 0.75rem;
-            padding: 5px 14px;
-            border-radius: 30px;
+            padding: 4px 10px;
+            border-radius: 8px;
             font-weight: 600;
-            border: 1px solid rgba(137, 207, 240, 0.12);
-            letter-spacing: 0.5px;
+            border: 1px solid rgba(137, 207, 240, 0.15);
         }
 
-        /* --- INTERACTIVE VISIT BUTTON --- */
-        .visit-link {
+        .view-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            color: var(--text-pure);
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 0.88rem;
             font-weight: 600;
-            padding: 11px 24px;
+            padding: 10px 20px;
             border: 1px solid var(--earth-brown);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            transition: all 0.2s ease;
             width: fit-content;
-            gap: 8px;
         }
 
-        .visit-link:hover {
+        .view-link:hover {
             background: var(--earth-brown);
-            box-shadow: 0 5px 15px var(--earth-brown-glow);
-            transform: translateX(3px);
+            box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3);
         }
 
-        /* --- CONTACT BOX (DASHED BOX) --- */
-        .connect-box {
-            background: rgba(255, 255, 255, 0.01);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px dashed rgba(139, 90, 43, 0.4);
-            max-width: 650px;
-            margin: 0 auto;
-            transition: border-color 0.3s ease;
+        /* --- TIMELINE MILESTONES --- */
+        .timeline-container {
+            border-left: 2px solid var(--border-color);
+            padding-left: 2rem;
+            margin-left: 0.5rem;
         }
 
-        .connect-box:hover {
-            border-color: var(--baby-blue);
-        }
-
-        .connect-text {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .connect-text a {
-            color: var(--baby-blue);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-top: 15px;
+        .timeline-card {
             position: relative;
+            margin-bottom: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 16px;
         }
 
-        .connect-text a::after {
-            content: "";
+        .timeline-card::before {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--baby-blue);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            left: calc(-2rem - 7px);
+            top: 2.2rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--earth-brown);
+            border: 2px solid var(--bg-main);
         }
 
-        .connect-text a:hover::after {
-            transform: scaleX(1);
+        .timeline-card.active-node::before {
+            background: var(--baby-blue);
+            box-shadow: 0 0 10px var(--baby-blue);
         }
 
-        .connect-text a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--baby-blue-glow);
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            .portfolio-wrapper { padding: 3.5rem 2rem; }
-            h1 { font-size: 2.2rem; }
-            .tagline { font-size: 0.95rem; }
-            .grid-layout { grid-template-columns: 1fr; }
+        .card-header-row h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .tag-period {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--baby-blue);
+            background: rgba(137, 207, 240, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .inst-text {
+            font-size: 0.9rem;
+            color: var(--earth-brown);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- HUBUNGKAN FRAME --- */
+        .box-connect {
+            border: 1px dashed var(--earth-brown);
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .box-connect p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .links-flex {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-social svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-3px);
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 900px) {
+            header { padding: 1rem 5%; }
+            nav ul { display: none; }
+            .hero-block { flex-direction: column; text-align: center; padding: 3rem 2rem; }
+            .projects-layout { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob-container">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
+    <header id="header">
+        <div class="logo">Samalona<span>.</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#connect">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="portfolio-wrapper">
-        <div class="content-center">
-            
-            <div class="profile-wrapper">
-                <div class="profile-circle">
-                    <img src="foto formal.png" alt="Foto Samalona Simanjuntak">
+    <div class="container">
+        
+        <section id="home">
+            <div class="hero-block">
+                <div class="profile-side">
+                    <div class="profile-frame">
+                        <img src="foto formal.png" alt="Foto Samalona Simanjuntak">
+                    </div>
+                </div>
+                <div class="text-side">
+                    <p class="subtitle">Software Developer & UI/UX Designer</p>
+                    <h1>Samalona Simanjuntak</h1>
+                    <p class="description">
+                        Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan. Fokus mengembangkan kapabilitas rekayasa perangkat lunak berskala andal, perancangan antarmuka komprehensif (UI/UX), serta implementasi visualisasi berbasis data spasial geospasial untuk solusi digital masa kini.
+                    </p>
                 </div>
             </div>
+        </section>
 
-            <h1>Samalona Simanjuntak</h1>
-            <p class="tagline">Software Developer & UI/UX Designer</p>
-            
-            <p class="bio-text">
-                Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Medan (Polmed). Fokus pada penyelarasan rekayasa sistem perangkat lunak yang andal dengan perancangan pengalaman pengguna (UI/UX) yang intuitif serta pemetaan data spasial yang presisi.
-            </p>
+        <section id="skills">
+            <h2 class="sec-title">Skills Matrix</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Development</h3>
+                    <div class="tags-wrapper">
+                        <span>Laravel</span>
+                        <span>Flutter</span>
+                        <span>Dart</span>
+                        <span>Python</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Design & Analytics</h3>
+                    <div class="tags-wrapper">
+                        <span>UI/UX Design</span>
+                        <span>Figma</span>
+                        <span>QGIS</span>
+                        <span>Spatial Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Core Competencies</h3>
+                    <div class="tags-wrapper">
+                        <span>Agile Development</span>
+                        <span>Data Mining</span>
+                        <span>System Mapping</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <h2>My Projects</h2>
-            <div class="grid-layout">
+        <section id="projects">
+            <h2 class="sec-title">Featured Projects</h2>
+            <div class="projects-layout">
                 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-item">
+                    <div class="img-box">
                         <img src="app akademik thumbnail.jpg" alt="Campus-Hub App Akademik">
                     </div>
-                    <div class="info-container">
+                    <div class="details-box">
                         <h3>Campus-Hub App Akademik</h3>
-                        <p>Platform akademik berbasis mobile yang dirancang khusus untuk mendukung kebutuhan interaksi dan pengelolaan informasi mahasiswa Jurusan Teknik Komputer dan Informatika di Polmed.</p>
-                        <div class="badge-box">
+                        <p>Platform akademik seluler terintegrasi yang dirancang khusus guna menyelaraskan kebutuhan administrasi, modul informasi, serta interaksi bagi mahasiswa Jurusan Teknik Komputer dan Informatika Polmed.</p>
+                        <div class="item-badges">
                             <span>Mobile Dev</span>
                             <span>UI/UX Design</span>
+                            <span>Flutter</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="https://appakademik-d8ad5.web.app/" class="view-link" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-item">
+                    <div class="img-box">
                         <img src="pemetaan coffee.jpg" alt="Pemetaan Kopi Kenangan dan Fore di Kota Medan">
                     </div>
-                    <div class="info-container">
-                        <h3>Pemetaan Kopi Kenangan dan Fore di Kota Medan</h3>
-                        <p>Analisis dan visualisasi data geospasial untuk pemetaan distribusi outlet bisnis F&B komersial (Kopi Kenangan & Fore Coffee) di wilayah Kota Medan menggunakan perangkat lunak QGIS.</p>
-                        <div class="badge-box">
+                    <div class="details-box">
+                        <h3>Pemetaan Kopi Kenangan dan Fore di Medan</h3>
+                        <p>Studi analisis data geospasial mendalam yang memetakan klasterisasi distribusi gerai F&B modern komersial di wilayah perkotaan Medan untuk kebutuhan strategis jangkauan pasar.</p>
+                        <div class="item-badges">
                             <span>QGIS</span>
                             <span>Spatial Analysis</span>
-                            <span>Data Mapping</span>
+                            <span>Business Mapping</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="https://pemetaan-coffee-production.up.railway.app/" class="view-link" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-item">
+                    <div class="img-box">
                         <img src="thumbnail SIG.png" alt="Tourscape-Ms">
                     </div>
-                    <div class="info-container">
-                        <h3>Tourscape-Ms Pemetaan tempat wisata di Medan dan Deli serdang</h3>
-                        <p>Proyek Sistem Informasi Geografis (SIG) komprehensif untuk memetakan, mengelompokkan, dan memvisualisasikan seluruh titik lokasi destinasi pariwisata potensial.</p>
-                        <div class="badge-box">
+                    <div class="details-box">
+                        <h3>Tourscape-Ms: Pemetaan Wisata Medan & Deli Serdang</h3>
+                        <p>Aplikasi Sistem Informasi Geografis (SIG) interaktif berskala regional untuk memetakan rute logistik, zonasi wisata potensial, serta penyajian peta kartografis interaktif.</p>
+                        <div class="item-badges">
                             <span>Geographic Info System</span>
                             <span>Visual Mapping</span>
+                            <span>SIG</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="https://tourscape-ms-wisata-medan-production.up.railway.app/" class="view-link" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
-                <div class="card-project">
-                    <div class="img-container">
+                <div class="project-item">
+                    <div class="img-box">
                         <img src="we safe.jpg" alt="We Safe Donation App">
                     </div>
-                    <div class="info-container">
+                    <div class="details-box">
                         <h3>Aplikasi Donasi "We Safe"</h3>
-                        <p>Perancangan produk dan sistem aplikasi galang dana digital yang berfokus pada transparansi alur bantuan serta antarmuka yang clean untuk mempermudah pengalaman donatur.</p>
-                        <div class="badge-box">
+                        <p>Produk rekayasa aplikasi sosial berbasis transparansi finansial yang mengedepankan pendekatan antarmuka yang bersih untuk menjamin kemudahan akses aliran penggalangan dana digital.</p>
+                        <div class="item-badges">
                             <span>Software Development</span>
                             <span>Figma Prototype</span>
+                            <span>UI/UX</span>
                         </div>
-                        <a href="#" class="visit-link" target="_blank">View Project &rarr;</a>
+                        <a href="https://appdonasi-ff609.web.app/" class="view-link" target="_blank">View Project &rarr;</a>
                     </div>
                 </div>
 
             </div>
+        </section>
 
-            <h2>Let's Connect</h2>
-            <div class="connect-box">
-                <p class="connect-text">
-                    Ingin berdiskusi mengenai peluang kolaborasi pengembangan aplikasi maupun pembuatan desain antarmuka?<br>
-                    <a href="mailto:samalonasimanjuntak2697@gmail.com">samalonasimanjuntak2697@gmail.com</a>
-                </p>
+        <section id="experience">
+            <h2 class="sec-title">Education & Experience</h2>
+            <div class="timeline-container">
+                
+                <div class="timeline-card active-node edu">
+                    <div class="card-header-row">
+                        <h4>Teknologi Rekayasa Perangkat Lunak</h4>
+                        <span class="tag-period">2023 - Sekarang</span>
+                    </div>
+                    <div class="inst-text">Politeknik Negeri Medan (Polmed)</div>
+                    <p>Mahasiswa aktif program studi TRPL. Mempelajari rekayasa perangkat lunak secara komprehensif, pengembangan UI/UX, pengolahan database, serta analisis sistem terintegrasi.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="card-header-row">
+                        <h4>Anggota Himpunan Mahasiswa</h4>
+                        <span class="tag-period">2024 - 2025</span>
+                    </div>
+                    <div class="inst-text">HMPS TRPL (Himpunan Mahasiswa Program Studi)</div>
+                    <p>Berperan aktif dalam keanggotaan himpunan mahasiswa jurusan. Terlibat dalam koordinasi program kerja, pengembangan kegiatan mahasiswa, dan kolaborasi antar divisi untuk memajukan komunitas akademik TRPL.</p>
+                </div>
+
+                <div class="timeline-card edu">
+                    <div class="card-header-row">
+                        <h4>Pendidikan Menengah Atas</h4>
+                        <span class="tag-period">2020 - 2023</span>
+                    </div>
+                    <div class="inst-text">SMA Negeri 1 Sidikalang</div>
+                    <p>Menyelesaikan pendidikan tingkat menengah atas, membangun landasan logika, matematika, dan kedisiplinan yang kuat sebelum melanjutkan studi ke bidang teknologi informasi.</p>
+                </div>
+
             </div>
+        </section>
 
-        </div>
+        <section id="connect">
+            <h2 class="sec-title">Let's Connect</h2>
+            <div class="box-connect">
+                <p>Tertarik untuk berdiskusi, bekerja sama dalam proyek IT, atau menawarkan kesempatan magang? Hubungi saya langsung melalui platform di bawah ini:</p>
+                <div class="links-flex">
+                    
+                    <a href="mailto:samalonasimanjuntak2697@gmail.com" class="btn-social">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Email
+                    </a>
+                    
+                    <a href="https://wa.me/6281360808332" target="_blank" class="btn-social">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                        WhatsApp
+                    </a>
+
+                    <a href="https://github.com/Samalona2697" target="_blank" class="btn-social">
+                        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        GitHub
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/samalona-simanjuntak-295424301/" target="_blank" class="btn-social">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
     </div>
 
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav ul li a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
